@@ -1,0 +1,12 @@
+*.build
+*.buildinfo
+*.changes
+*.deb
+*.debian.tar.xz
+/debian/files
+/debian/webthings-gateway/
+/debian/.debhelper/
+/debian/webthings-gateway.substvars
+/debian/debhelper-build-stamp
+*.dsc
+/gateway-*/

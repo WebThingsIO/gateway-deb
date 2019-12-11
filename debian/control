@@ -1,0 +1,13 @@
+Source: webthings-gateway
+Maintainer: Michael Stegeman <mstegeman@mozilla.com>
+Section: web
+Priority: optional
+Standards-Version: 3.9.2
+Homepage: https://iot.mozilla.org/gateway/
+Build-Depends: debhelper (>= 9), nodejs (>= 8), npm, git, python, python3-setuptools
+
+Package: webthings-gateway
+Architecture: any
+Description: WebThings Gateway by Mozilla
+Depends: ${shlibs:Depends}, ${misc:Depends}, nodejs (>= 8), pagekite, python3, python3-pip
+Recommends: arping, avahi-daemon, ffmpeg, mosquitto, sqlite3

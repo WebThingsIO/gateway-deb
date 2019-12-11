@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	$(RM) -rf build node_modules
+
+override_dh_auto_build:
+	$(eval NPM_CACHE := $(shell mktemp -dq))
+	npm --cache "$(NPM_CACHE)" install
+	./node_modules/.bin/webpack
+	$(RM) -rf node_modules
+	npm --cache "$(NPM_CACHE)" install --production
+	$(RM) -rf "$(NPM_CACHE)"
+	chmod a+x webthings-gateway
