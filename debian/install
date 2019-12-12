@@ -1,6 +1,7 @@
 LICENSE opt/webthings-gateway
 build opt/webthings-gateway
 config/default.js opt/webthings-gateway/config
+intent-parser opt/webthings-gateway
 node_modules opt/webthings-gateway
 package-lock.json opt/webthings-gateway
 package.json opt/webthings-gateway
