@@ -1,7 +1,7 @@
 Add a launcher for the gateway.
 --- /dev/null
 +++ b/webthings-gateway
-@@ -0,0 +1,18 @@
+@@ -0,0 +1,19 @@
 +#!/bin/bash
 +
 +if [[ $EUID -ne 0 ]]; then
@@ -16,7 +16,8 @@ Add a launcher for the gateway.
 +
 +cd /opt/webthings-gateway
 +PYTHONPATH=/opt/webthings-gateway/python setpriv \
-+  --ruid=webthings \
-+  --rgid=webthings \
++  --reuid=webthings \
++  --regid=webthings \
 +  --init-groups \
++  --inh-caps=-all \
 +  node build/gateway.js
