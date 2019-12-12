@@ -2,7 +2,7 @@ Add a launcher for the gateway.
 --- /dev/null
 +++ b/webthings-gateway
 @@ -0,0 +1,16 @@
-+#!/usr/bin/bash
++#!/bin/bash
 +
 +if [[ $EUID -ne 0 ]]; then
 +  echo "Program must be run as root."
@@ -15,6 +15,6 @@ Add a launcher for the gateway.
 +fi
 +
 +cd /opt/webthings-gateway
-+su -c "node build/gateway.js" webthings
++PYTHONPATH=/opt/webthings-gateway/python su -c "node build/gateway.js" webthings
 +
 +# vim:set ts=2 sw=2 et ft=sh:

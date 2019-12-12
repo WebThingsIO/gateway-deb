@@ -3,10 +3,10 @@
 *.changes
 *.deb
 *.debian.tar.xz
-/debian/files
-/debian/webthings-gateway/
-/debian/.debhelper/
-/debian/webthings-gateway.substvars
-/debian/debhelper-build-stamp
 *.dsc
-/gateway-*/
+/debian/.debhelper/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/webthings-gateway.substvars
+/debian/webthings-gateway/
+/webthings-gateway/

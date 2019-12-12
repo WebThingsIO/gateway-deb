@@ -14,3 +14,8 @@ override_dh_auto_build:
 	npm --cache "$(NPM_CACHE)" install --production
 	$(RM) -rf "$(NPM_CACHE)"
 	chmod a+x webthings-gateway
+	mkdir python
+	cd gateway-addon-python && \
+		git init && \
+		python3 -m pip install --install-option="--prefix=" -t ../python .
+
