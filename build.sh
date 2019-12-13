@@ -40,6 +40,7 @@ cd ..
 _deb=$(ls webthings-gateway_*.deb)
 _renamed="${_deb/.deb/-$(lsb_release -is | tr '[A-Z]' '[a-z]')-$(lsb_release -cs | tr '[A-Z]' '[a-z]')}.deb"
 mv "${_deb}" "${_renamed}"
+ln -s "${_renamed}" "webthings-gateway.deb"
 
 echo ""
 echo "Done building: ${_renamed}"

@@ -1,0 +1,20 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+      - name: Build the Package
+        run: ./build.sh
+      - name: Save the package
+        uses: actions/upload-artifact@v1
+        with:
+          name: webthings-gateway.deb
+          path: webthings-gateway.deb

@@ -15,8 +15,8 @@ override_dh_auto_build:
 	chmod a+x webthings-gateway
 	mkdir python
 	cd gateway-addon-python && \
-		python3 -m pip install --install-option="--prefix=" -t ../python .
-	python3 -m pip install --install-option="--prefix=" -t ./python "git+https://github.com/mycroftai/adapt#egg=adapt-parser"
+		python3 -m pip install --system --install-option="--prefix=" -t ../python .
+	python3 -m pip install --system --install-option="--prefix=" -t ./python "git+https://github.com/mycroftai/adapt#egg=adapt-parser"
 
 override_dh_installinit:
 	dh_installinit --name=webthings-gateway-intent-parser
