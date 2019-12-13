@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+#NPM := NODE_PATH=/usr/local/lib/node_modules/npm/node_modules /usr/local/lib/node_modules/npm/bin/npm-cli.js
+NPM := npm
+
 %:
 	dh $@ --with-systemd
 
@@ -8,9 +11,14 @@ override_dh_auto_clean:
 
 override_dh_auto_build:
 	$(eval NPM_CACHE := $(shell mktemp -dq))
-	npm --cache "$(NPM_CACHE)" install
+	#$(NPM) -v
+	#$(RM) -rf ./node_modules
+	$(NPM) --cache "$(NPM_CACHE)" install
 	./node_modules/.bin/webpack
-	npm --cache "$(NPM_CACHE)" prune --production
+	# npm prune would be better but it seems to be buggy
+	#$(NPM) --cache "$(NPM_CACHE)" prune --production
+	$(RM) -rf  node_modules
+	$(NPM) --cache "$(NPM_CACHE)" install --production
 	$(RM) -rf "$(NPM_CACHE)"
 	chmod a+x webthings-gateway
 	mkdir python

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -e
+set -e -x
+
+cd "$(readlink -f $(dirname "$0"))"
 
 # Install build dependencies
 _build_deps=$(
@@ -8,15 +10,25 @@ _build_deps=$(
         cut -d: -f2- |
         sed -E -e 's/\s*\([><=]+\s*[0-9.]+\)//g' -e 's/,//g'
 )
-_extra_deps="build-essential ca-certificates devscripts fakeroot git-lfs"
-sudo -p 'Enter sudo password to install build dependencies: ' \
-    su -c "apt update && apt install -y ${_extra_deps} ${_build_deps}"
+_extra_deps="build-essential ca-certificates devscripts fakeroot git-lfs lsb-release"
+
+if [[ $EUID -eq 0 ]]; then
+    apt update
+    apt install --no-install-recommends -y ${_extra_deps} ${_build_deps}
+#    npm config set unsafe-perm true
+#    npm install -g npm@latest
+else
+    sudo -p 'Enter sudo password to install build dependencies: ' \
+        su -c "apt update && apt install --no-install-recommends -y ${_extra_deps} ${_build_deps}"
+#        su -c "apt update && apt install --no-install-recommends -y ${_extra_deps} ${_build_deps} && npm config set unsafe-perm true && npm install -g npm@latest && ln -sf /usr/local/bin/npm /usr/bin/npm && npm cache clean --force"
+fi
 
 # Clean up
 git clean -Xdf
 rm -rf webthings-gateway
 
 # Unpack the tarball
+git lfs install
 git lfs pull
 tar xzf *.orig.tar.gz
 cd webthings-gateway
