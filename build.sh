@@ -6,16 +6,18 @@ set -e -x
 _build_deps=$(
     grep ^Build-Depends debian/control |
         cut -d: -f2- |
-        sed -E -e 's/\s*\([><=]+\s*[0-9.]+\)//g' -e 's/,/"/g' -e 's/ / "/g' -e 's/$/"/'
+        sed -E -e 's/\s*\([><=]+\s*[0-9.]+\)//g' -e 's/,//g'
 )
+_extra_deps="build-essential ca-certificates devscripts fakeroot git-lfs"
 sudo -p 'Enter sudo password to install build dependencies: ' \
-    su -c "apt update && apt install -y ${_build_deps}"
+    su -c "apt update && apt install -y ${_extra_deps} ${_build_deps}"
 
 # Clean up
 git clean -Xdf
 rm -rf webthings-gateway
 
 # Unpack the tarball
+git lfs pull
 tar xzf *.orig.tar.gz
 cd webthings-gateway
 
