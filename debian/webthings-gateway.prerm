@@ -1,5 +1,5 @@
 #!/bin/sh
-# postrm script for webthings-gateway
+# prerm script for webthings-gateway
 
 set -e
 
