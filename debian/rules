@@ -10,13 +10,11 @@ override_dh_auto_build:
 	$(eval NPM_CACHE := $(shell mktemp -dq))
 	npm --cache "$(NPM_CACHE)" install
 	./node_modules/.bin/webpack
-	$(RM) -rf node_modules
-	npm --cache "$(NPM_CACHE)" install --production
+	npm --cache "$(NPM_CACHE)" prune --production
 	$(RM) -rf "$(NPM_CACHE)"
 	chmod a+x webthings-gateway
 	mkdir python
 	cd gateway-addon-python && \
-		git init && \
 		python3 -m pip install --install-option="--prefix=" -t ../python .
 	python3 -m pip install --install-option="--prefix=" -t ./python "git+https://github.com/mycroftai/adapt#egg=adapt-parser"
 
