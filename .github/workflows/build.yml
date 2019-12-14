@@ -46,9 +46,8 @@ jobs:
           docker create --name build -it ${{ matrix.image }} /build/build.sh
           docker cp . build:/build
           docker start -a build
-          docker cp build:/build/webthings-gateway.deb ./webthings-gateway.deb
+          docker cp -L build:/build/webthings-gateway.deb ./webthings-gateway.deb
           docker rm build
-          ./build.sh
       - name: Save the package
         uses: actions/upload-artifact@v1
         with:
