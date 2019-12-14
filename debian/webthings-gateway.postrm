@@ -3,4 +3,8 @@
 
 set -e
 
+if [ -f /etc/sudoers.d/010_webthings-nopasswd ]; then
+  rm -f /etc/sudoers.d/010_webthings-nopasswd
+fi
+
 #DEBHELPER#
