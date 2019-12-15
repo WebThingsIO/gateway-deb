@@ -1,6 +1,15 @@
 # WebThings Gateway by Mozilla
 
-Web of Things gateway.
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mozilla-iot/gateway-deb/Build)
+
+Debian package for Mozilla's WebThings Gateway.
+
+Current build targets:
+* Ubuntu Bionic (18.04)
+* Ubuntu Disco (19.04)
+* Ubuntu Eoan (19.10)
+* Debian Buster
+* Raspbian Buster
 
 ## Building
 
