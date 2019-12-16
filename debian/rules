@@ -21,7 +21,7 @@ override_dh_auto_build:
 		--system \
 		--install-option="--prefix=" \
 		--no-binary=:all: \
-		-t ../python \
+		-t ./python \
 		./gateway-addon-python
 	python3 -m pip install \
 		--system \
