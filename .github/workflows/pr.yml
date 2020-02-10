@@ -1,0 +1,49 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          [
+            "ubuntu:bionic",
+            "ubuntu:disco",
+            "ubuntu:eoan",
+            "debian:buster",
+            "balenalib/raspberry-pi-debian:buster",
+          ]
+        include:
+          - image: "ubuntu:bionic"
+            name: "ubuntu-bionic"
+            arch: "amd64"
+          - image: "ubuntu:disco"
+            name: "ubuntu-disco"
+            arch: "amd64"
+          - image: "ubuntu:eoan"
+            name: "ubuntu-eoan"
+            arch: "amd64"
+          - image: "debian:buster"
+            name: "debian-buster"
+            arch: "amd64"
+          - image: "balenalib/raspberry-pi-debian:buster"
+            name: "raspbian-buster"
+            arch: "arm"
+    steps:
+      - name: Install qemu
+        run: |
+          sudo apt update
+          sudo apt install -y qemu-user-static binfmt-support --no-install-recommends
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+      - name: Build the Package
+        run: |
+          docker create --name build -it ${{ matrix.image }} /build/build.sh
+          docker cp . build:/build
+          docker start -a build
+          docker rm build
