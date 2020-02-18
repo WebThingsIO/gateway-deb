@@ -17,6 +17,7 @@ jobs:
             "ubuntu:eoan",
             "debian:buster",
             "balenalib/raspberry-pi-debian:buster",
+            "balenalib/raspberrypi3-64-debian:buster",
           ]
         include:
           - image: "ubuntu:bionic"
@@ -34,6 +35,9 @@ jobs:
           - image: "balenalib/raspberry-pi-debian:buster"
             name: "raspbian-buster"
             arch: "arm"
+          - image: "balenalib/raspberrypi3-64-debian:buster"
+            name: "debian-buster"
+            arch: "arm64"
     steps:
       - name: Install qemu
         run: |
