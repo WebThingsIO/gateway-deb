@@ -1,0 +1,16 @@
+# .dockerignore
+Dockerfile
+# .gitignore
+*.build
+*.buildinfo
+*.changes
+*.deb
+*.debian.tar.xz
+*.dsc
+/debian/.debhelper/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/webthings-gateway.substvars
+/debian/webthings-gateway/
+/webthings-gateway/
+*~
