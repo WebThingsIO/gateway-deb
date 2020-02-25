@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+# SPDX-License-Identifier: MPL-2.0
+
+version: "2"
+
+services:
+  default:
+    build: .
+    ports:
+      - "8080:8080"
