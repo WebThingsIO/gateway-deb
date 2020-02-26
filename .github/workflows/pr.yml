@@ -15,9 +15,13 @@ jobs:
             "ubuntu:bionic",
             "ubuntu:disco",
             "ubuntu:eoan",
+            "balenalib/intel-edison-ubuntu:bionic",
+            "balenalib/intel-edison-ubuntu:disco",
+            "balenalib/intel-edison-ubuntu:eoan",
             "debian:buster",
             "balenalib/raspberry-pi-debian:buster",
             "balenalib/raspberrypi3-64-debian:buster",
+            "balenalib/intel-edison-debian:buster",
           ]
         include:
           - image: "ubuntu:bionic"
@@ -29,6 +33,15 @@ jobs:
           - image: "ubuntu:eoan"
             name: "ubuntu-eoan"
             arch: "amd64"
+          - image: "balenalib/intel-edison-ubuntu:bionic"
+            name: "ubuntu-bionic"
+            arch: "i386"
+          - image: "balenalib/intel-edison-ubuntu:disco"
+            name: "ubuntu-disco"
+            arch: "i386"
+          - image: "balenalib/intel-edison-ubuntu:eoan"
+            name: "ubuntu-eoan"
+            arch: "i386"
           - image: "debian:buster"
             name: "debian-buster"
             arch: "amd64"
@@ -38,6 +51,9 @@ jobs:
           - image: "balenalib/raspberrypi3-64-debian:buster"
             name: "debian-buster"
             arch: "arm64"
+          - image: "balenalib/intel-edison-debian:buster"
+            name: "debian-buster"
+            arch: "i386"
     steps:
       - name: Install qemu
         run: |
