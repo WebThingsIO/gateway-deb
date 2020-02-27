@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 
-set -e -x
+set -x
 
 cd "$(readlink -f $(dirname "$0"))"
 
@@ -51,9 +51,7 @@ debuild -us -uc
 # Done building, let's just rename things
 cd ..
 _deb=$(ls webthings-gateway_*.deb)
-_renamed="${_deb/.deb/-$(lsb_release -is | tr '[A-Z]' '[a-z]')-$(lsb_release -cs | tr '[A-Z]' '[a-z]')}.deb"
-mv "${_deb}" "${_renamed}"
-ln -s "${_renamed}" "webthings-gateway.deb"
+ln -s "${_deb}" "webthings-gateway.deb"
 
 echo ""
-echo "Done building: ${_renamed}"
+echo "Done building: ${_deb}"

@@ -13,36 +13,50 @@ jobs:
         image:
           [
             "ubuntu:bionic",
+            "arm64v8/ubuntu:bionic",
             "ubuntu:disco",
+            "arm64v8/ubuntu:disco",
             "ubuntu:eoan",
+            "arm64v8/ubuntu:eoan",
             "debian:buster",
+            "arm64v8/debian:buster",
             "balenalib/raspberry-pi-debian:buster",
-            "balenalib/raspberrypi3-64-debian:buster",
           ]
         include:
           - image: "ubuntu:bionic"
             name: "ubuntu-bionic"
             arch: "amd64"
+          - image: "arm64v8/ubuntu:bionic"
+            name: "ubuntu-bionic"
+            arch: "arm64"
           - image: "ubuntu:disco"
             name: "ubuntu-disco"
             arch: "amd64"
+          - image: "arm64v8/ubuntu:disco"
+            name: "ubuntu-disco"
+            arch: "arm64"
           - image: "ubuntu:eoan"
             name: "ubuntu-eoan"
             arch: "amd64"
+          - image: "arm64v8/ubuntu:eoan"
+            name: "ubuntu-eoan"
+            arch: "arm64"
           - image: "debian:buster"
             name: "debian-buster"
             arch: "amd64"
-          - image: "balenalib/raspberry-pi-debian:buster"
-            name: "raspbian-buster"
-            arch: "arm"
-          - image: "balenalib/raspberrypi3-64-debian:buster"
+          - image: "arm64v8/debian:buster"
             name: "debian-buster"
             arch: "arm64"
+          - image: "balenalib/raspberry-pi-debian:buster"
+            name: "raspbian-buster"
+            arch: "armhf"
     steps:
       - name: Install qemu
         run: |
           sudo apt update
-          sudo apt install -y qemu-user-static binfmt-support --no-install-recommends
+          sudo apt install -y qemu qemu-user-static binfmt-support --no-install-recommends
+      - name: Setup qemu-user-static
+        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - name: Checkout the repository
         uses: actions/checkout@v1
       - name: Build the Package

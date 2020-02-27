@@ -9,7 +9,7 @@ Update the default configuration for running as a package.
 +  cli: false,
  
 -  profileDir: `${home}/.mozilla-iot`,
-+  profileDir: `/etc/webthings-gateway`,
++  profileDir: '/etc/webthings-gateway',
  
    ports: {
      https: 4443,
