@@ -10,8 +10,7 @@ override_dh_auto_clean:
 
 override_dh_auto_build:
 	$(eval NPM_CACHE := $(shell mktemp -dq))
-	$(RM) -rf ./node_modules package-lock.json
-	CPPFLAGS="-DPNG_ARM_NEON_OPT=0" $(NPM) --cache "$(NPM_CACHE)" install
+	CPPFLAGS="-DPNG_ARM_NEON_OPT=0" $(NPM) --cache "$(NPM_CACHE)" ci
 	./node_modules/.bin/webpack
 	$(RM) -rf ./node_modules/gifsicle
 	$(RM) -rf ./node_modules/mozjpeg

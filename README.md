@@ -5,11 +5,11 @@
 Debian package for Mozilla's WebThings Gateway, available here: https://github.com/mozilla-iot/gateway/releases
 
 Current build targets:
-* Ubuntu Bionic (18.04)
-* Ubuntu Disco (19.04)
-* Ubuntu Eoan (19.10)
-* Debian Buster
-* Raspbian Buster
+* Ubuntu Bionic (18.04) (amd64, arm64)
+* Ubuntu Disco (19.04) (amd64, arm64)
+* Ubuntu Eoan (19.10) (amd64, arm64)
+* Debian Buster (amd64, arm64)
+* Raspbian Buster (armhf)
 
 ## Installation
 
