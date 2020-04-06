@@ -4,6 +4,24 @@ set -x
 
 cd "$(readlink -f $(dirname "$0"))"
 
+# On Ubuntu 18.04, we need to get Node.js from NodeSource
+if [[ $(. /etc/lsb-release && echo $DISTRIB_ID) == "Ubuntu" &&
+      $(. /etc/lsb-release && echo $DISTRIB_CODENAME) = "bionic" ]]; then
+    if [[ $EUID -eq 0 ]]; then
+        apt update
+        apt install --no-install-recommends -y ca-certificates curl
+        curl -sL https://deb.nodesource.com/setup_10.x | bash -
+    else
+        sudo -p 'Enter sudo password to install build dependencies: ' \
+            su -c "apt update && apt install --no-install-recommends -y ca-certificates curl"
+        curl -sL https://deb.nodesource.com/setup_10.x | sudo -p 'Enter sudo password to install build dependencies: ' -E bash -
+    fi
+
+    sed -i "s/{{npm}}//" debian/control
+else
+    sed -i "s/{{npm}}/npm,/" debian/control
+fi
+
 # Install build dependencies
 _build_deps=$(
     grep ^Build-Depends debian/control |

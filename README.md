@@ -6,6 +6,7 @@ Debian package for Mozilla's WebThings Gateway, available here: https://github.c
 
 Current build targets:
 * Ubuntu Bionic (18.04) (amd64, arm64)
+    * Must have Node 10.x installed from [NodeSource](https://github.com/nodesource/distributions/blob/master/README.md#deb)
 * Ubuntu Disco (19.04) (amd64, arm64)
 * Ubuntu Eoan (19.10) (amd64, arm64)
 * Debian Buster (amd64, arm64)
