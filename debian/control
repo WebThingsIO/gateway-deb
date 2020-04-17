@@ -4,7 +4,7 @@ Section: web
 Priority: optional
 Standards-Version: 4.3.0
 Homepage: https://iot.mozilla.org/gateway/
-Build-Depends: debhelper (>= 9), nodejs (>= 8), {{npm}} git, python, python3, python3-pip, python3-setuptools, libffi-dev, libpython3-dev, libpng-dev, pkg-config, zlib1g-dev
+Build-Depends: debhelper (>= 9), nodejs (>= 8), {{npm}} git, python, python3, python3-pip, python3-setuptools, libffi-dev, libpython3-dev, libpng-dev, pkg-config, {{setpriv}} zlib1g-dev
 
 Package: webthings-gateway
 Architecture: any
