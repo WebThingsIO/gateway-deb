@@ -14,10 +14,10 @@ jobs:
           [
             "ubuntu:bionic",
             "arm64v8/ubuntu:bionic",
-            "ubuntu:disco",
-            "arm64v8/ubuntu:disco",
             "ubuntu:eoan",
             "arm64v8/ubuntu:eoan",
+            "ubuntu:focal",
+            "arm64v8/ubuntu:focal",
             "debian:buster",
             "arm64v8/debian:buster",
             "balenalib/raspberry-pi-debian:buster",
@@ -29,17 +29,17 @@ jobs:
           - image: "arm64v8/ubuntu:bionic"
             name: "ubuntu-bionic"
             arch: "arm64"
-          - image: "ubuntu:disco"
-            name: "ubuntu-disco"
-            arch: "amd64"
-          - image: "arm64v8/ubuntu:disco"
-            name: "ubuntu-disco"
-            arch: "arm64"
           - image: "ubuntu:eoan"
             name: "ubuntu-eoan"
             arch: "amd64"
           - image: "arm64v8/ubuntu:eoan"
             name: "ubuntu-eoan"
+            arch: "arm64"
+          - image: "ubuntu:focal"
+            name: "ubuntu-focal"
+            arch: "amd64"
+          - image: "arm64v8/ubuntu:focal"
+            name: "ubuntu-focal"
             arch: "arm64"
           - image: "debian:buster"
             name: "debian-buster"
@@ -58,7 +58,7 @@ jobs:
       - name: Setup qemu-user-static
         run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - name: Checkout the repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Build the Package
         run: |
           docker create --name build -it ${{ matrix.image }} /build/build.sh

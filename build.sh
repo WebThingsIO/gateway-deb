@@ -18,8 +18,10 @@ if [[ $(. /etc/lsb-release && echo $DISTRIB_ID) == "Ubuntu" &&
     fi
 
     sed -i "s/{{npm}}//" debian/control
+    sed -i "s/{{setpriv}}/setpriv,/" debian/control
 else
     sed -i "s/{{npm}}/npm,/" debian/control
+    sed -i "s/{{setpriv}}//" debian/control
 fi
 
 # Install build dependencies
