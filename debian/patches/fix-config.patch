@@ -31,12 +31,3 @@ Update the default configuration for running as a package.
          mozillaTunnelService: true,
          localControl: {
            mdnsServiceType: 'http',
-@@ -61,7 +61,7 @@
-     enabled: true,
-     registration_endpoint: 'https://api.mozilla-iot.org:8443',
-     domain: 'mozilla-iot.org',
--    pagekite_cmd: path.normalize(path.join(process.cwd(), 'pagekite.py')),
-+    pagekite_cmd: '/usr/bin/pagekite',
-     port: 443,
-     certemail: 'certificate@mozilla-iot.org',
-   },
