@@ -20,6 +20,9 @@ case "$1" in
       --home /var/run/webthings-gateway --no-create-home \
       --gecos "Mozilla WebThings Gateway" --group webthings
 
+    usermod -a -G gpio webthings || true
+    usermod -a -G dialout webthings || true
+
     if [ `lsb_release -is` = "Raspbian" ]; then
       echo "webthings ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/010_webthings-nopasswd
       chmod 0440 /etc/sudoers.d/010_webthings-nopasswd
