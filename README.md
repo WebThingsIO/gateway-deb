@@ -1,20 +1,20 @@
-# WebThings Gateway by Mozilla
+# WebThings Gateway
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mozilla-iot/gateway-deb/Build)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/WebThingsIO/gateway-deb/Build)
 
-Debian package for Mozilla's WebThings Gateway, available here: https://github.com/mozilla-iot/gateway/releases
+Debian package for WebThings Gateway, available here: https://github.com/WebThingsIO/gateway/releases
 
 Current build targets:
 * Ubuntu Bionic (18.04) (amd64, arm64)
     * Must have Node 10.x installed from [NodeSource](https://github.com/nodesource/distributions/blob/master/README.md#deb)
-* Ubuntu Eoan (19.10) (amd64, arm64)
 * Ubuntu Focal (20.04) (amd64, arm64)
+* Ubuntu Groovy (20.10) (amd64, arm64)
 * Debian Buster (amd64, arm64)
 * Raspbian Buster (armhf)
 
 ## Installation
 
-1. Download the appropriate package from the gateway's [releases page](https://github.com/mozilla-iot/gateway/releases).
+1. Download the appropriate package from the gateway's [releases page](https://github.com/WebThingsIO/gateway/releases).
 2. Install the package:
 
     ```sh

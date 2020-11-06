@@ -18,7 +18,7 @@ case "$1" in
   configure)
     adduser --disabled-password --quiet --system \
       --home /var/run/webthings-gateway --no-create-home \
-      --gecos "Mozilla WebThings Gateway" --group webthings
+      --gecos "WebThings Gateway" --group webthings
 
     usermod -a -G gpio webthings || true
     usermod -a -G dialout webthings || true
