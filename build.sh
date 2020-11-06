@@ -30,7 +30,7 @@ _build_deps=$(
         cut -d: -f2- |
         sed -E -e 's/\s*\([><=]+\s*[0-9.]+\)//g' -e 's/,//g'
 )
-_extra_deps="build-essential ca-certificates devscripts fakeroot git-lfs lsb-release"
+_extra_deps="build-essential ca-certificates devscripts fakeroot lsb-release"
 
 if [[ $EUID -eq 0 ]]; then
     apt update
@@ -49,8 +49,6 @@ git clean -Xdf
 rm -rf webthings-gateway
 
 # Unpack the tarball
-git lfs install
-git lfs pull
 tar xzf *.orig.tar.gz
 cd webthings-gateway
 
