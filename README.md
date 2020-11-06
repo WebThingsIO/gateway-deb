@@ -1,7 +1,5 @@
 # WebThings Gateway
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/WebThingsIO/gateway-deb/Build)
-
 Debian package for WebThings Gateway, available here: https://github.com/WebThingsIO/gateway/releases
 
 Current build targets:
