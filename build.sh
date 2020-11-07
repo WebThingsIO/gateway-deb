@@ -4,6 +4,9 @@ set -x
 
 cd "$(readlink -f $(dirname "$0"))"
 
+# Make apt behave and not ask questions
+export DEBIAN_FRONTEND=noninteractive
+
 # On Ubuntu 18.04, we need to get Node.js from NodeSource
 if [[ $(. /etc/lsb-release && echo $DISTRIB_ID) == "Ubuntu" &&
       $(. /etc/lsb-release && echo $DISTRIB_CODENAME) = "bionic" ]]; then
