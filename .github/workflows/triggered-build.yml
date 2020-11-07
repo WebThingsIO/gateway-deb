@@ -63,6 +63,7 @@ jobs:
           ./generate-tarball.sh "${{ github.event.client_payload.gateway_version }}" "${{ github.event.client_payload.gateway_addon_version }}"
       - name: Build the Package
         run: |
+          docker pull ${{ matrix.image }}
           docker create --name build -it ${{ matrix.image }} /build/build.sh
           docker cp . build:/build
           docker start -a build
