@@ -36,7 +36,7 @@ _build_deps=$(
 _extra_deps="build-essential ca-certificates devscripts fakeroot lsb-release"
 
 if [[ $EUID -eq 0 ]]; then
-    apt update
+    apt update || apt update
     apt install --no-install-recommends -y ${_extra_deps} ${_build_deps}
     # this should be `npm config -g set unsafe-perm true`, but that sometimes
     # causes crashes with ancient npm versions
@@ -44,7 +44,7 @@ if [[ $EUID -eq 0 ]]; then
     npm install -g npm@latest
 else
     sudo -p 'Enter sudo password to install build dependencies: ' \
-        su -c "apt update && apt install --no-install-recommends -y ${_extra_deps} ${_build_deps} && echo 'unsafe-perm = true' >> /etc/npmrc && npm install -g npm@latest"
+        su -c "(apt update || apt update) && apt install --no-install-recommends -y ${_extra_deps} ${_build_deps} && echo 'unsafe-perm = true' >> /etc/npmrc && npm install -g npm@latest"
 fi
 
 # Clean up
